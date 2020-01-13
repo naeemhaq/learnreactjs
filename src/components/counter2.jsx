@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Counter2 extends Component {
     state = {
-        count: 0,
+        value: this.props.value,
         imageUrl: 'https://picsum.photos/200',
         tags: []
     };
@@ -16,15 +16,14 @@ class Counter2 extends Component {
     }
 */
     // the above constructor is not required if we convert below to an arrow function
-    handleIncrement = product => {
+    handleIncrement = () => {
         // setState is inherited method which updates the virtual DOM and 
         // view is updated through this method. 
-        console.log(product);
-        this.setState({count: this.state.count + 1});
+        this.setState({value: this.state.value + 1});
     };
 
     render() { 
-    
+        console.log('props', this.props);
         return(
             <React.Fragment>
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
@@ -35,18 +34,18 @@ class Counter2 extends Component {
                     this.handleIncrement is passing a function reference we will replace this will inline funtion
                     instead of hard codding id: 1 we are passing product variable.
                 */}
-                <button onClick={(id) => this.handleIncrement({id})} className="btn btn-secondary btn-sm">Increment</button>
+                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
             </React.Fragment>
         );
     }
 
     getBadgeClasses() {
         let classes = "badge m-2 badge-";
-        classes += this.state.count === 0 ? "warning" : "primary";
+        classes += this.state.value === 0 ? "warning" : "primary";
         return classes;
     }
     formatCount() {
-        const {count} = this.state;
+        const {value: count} = this.state;
         return count === 0 ? "Zero" : count;
     }
 }
