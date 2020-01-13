@@ -14,14 +14,14 @@ class Counter2 extends Component {
         // in which this will always reference to the current object
         this.handleIncrement = this.handleIncrement.bind(this);
     }
-    passing event arguments 1:12
 */
     // the above constructor is not required if we convert below to an arrow function
-    handleIncrement = () => {
+    handleIncrement = product => {
         // setState is inherited method which updates the virtual DOM and 
         // view is updated through this method. 
+        console.log(product);
         this.setState({count: this.state.count + 1});
-    }
+    };
 
     render() { 
     
@@ -29,8 +29,13 @@ class Counter2 extends Component {
             <React.Fragment>
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
                 
-                {/* this.handleIncrement is a function reference */}
-                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
+                {/* passing event arguments 1:13
+                    we can have a wrapper function doHandleIncrement() to pass arguments but thats not recommended.
+                    check video for details 1:14
+                    this.handleIncrement is passing a function reference we will replace this will inline funtion
+                    instead of hard codding id: 1 we are passing product variable.
+                */}
+                <button onClick={(id) => this.handleIncrement({id})} className="btn btn-secondary btn-sm">Increment</button>
             </React.Fragment>
         );
     }
