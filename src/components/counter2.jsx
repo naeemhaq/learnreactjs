@@ -14,6 +14,7 @@ class Counter2 extends Component {
         // in which this will always reference to the current object
         this.handleIncrement = this.handleIncrement.bind(this);
     }
+    passing event arguments 1:12
 */
     // the above constructor is not required if we convert below to an arrow function
     handleIncrement = () => {
@@ -27,6 +28,8 @@ class Counter2 extends Component {
         return(
             <React.Fragment>
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+                
+                {/* this.handleIncrement is a function reference */}
                 <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
             </React.Fragment>
         );
