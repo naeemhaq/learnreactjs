@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  major: 0
+  major: 1
   # define b as a counter with the prefix as variable a, and seed as 100.
   minor: $[counter(variables['major'], 10)]
 
